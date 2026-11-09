@@ -33,7 +33,7 @@ def _(M, P, Y, mo, np, plt):
 
     # Money demand curves (i in percent on the y-axis)
     _i = np.linspace(0, 25, 200)
-    _ax.plot((P.value * a*Y.value) / (b*_i), _i , color="tab:blue", lw=2.5, label="Money demand $M^d$")
+    _ax.plot((P.value * a*Y.value) / (b*_i), _i , color="tab:blue", lw=2.5, label="Money demand $M^D$")
 
     # Money supply (vertical)
     _ax.axvline(M.value, color="black", lw=1.5, label="Money supply $M^s$")
@@ -54,8 +54,8 @@ def _(M, P, Y, mo, np, plt):
 
     _stats = mo.md(
         f"**Money supply M:** {M.value:,.0f}  \n"
-        f"**Real income \\Y:** {Y.value:,.0f}  \n"
-        f"**Price Level \\P:** {P.value:,.2f}  \n"
+        f"**Real income Y:** {Y.value:,.0f}  \n"
+        f"**Price Level P:** {P.value:,.2f}  \n"
         f"**Equilibrium interest rate i\\*:** {_i_plot:.2f} %"
     )
 
@@ -71,7 +71,7 @@ def _(M, P, Y, mo, np, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Nominal Money demand: $M^D = YPL(i) = €\underset{+}{Y}L(\underset{-}{i})$
+    ### Nominal money demand: $M^D = YPL(i) = €\underset{+}{Y}L(\underset{-}{i})$
     ### Equilibrium: $M^D = M^S$
 
     - $M$ money supply, set by the central bank
