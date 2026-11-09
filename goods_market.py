@@ -74,7 +74,7 @@ def _(G, I, T, c0, c1, mo, np, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Demand: $Z = c_0 + c_1 (Y - T) + I + G$
+    ### Demand: $Z = Y = c_0 + c_1 (Y - T) + I + G$
     ### Equilibrium: $Y^* = \dfrac{1}{1 - c_1}\,\big(c_0 - c_1 T + I + G\big)$
 
     - $c_0$ autonomous consumption
