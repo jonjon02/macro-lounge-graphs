@@ -44,7 +44,7 @@ def _(G, I, T, c0, c1, mo, np, plt):
         _ax.plot(_Ystar, _Ystar, "o", color="tab:red", ms=8, zorder=5)
         _ax.vlines(_Ystar, 0, _Ystar, color="tab:red", ls=":", lw=1)
         _ax.hlines(_Ystar, 0, _Ystar, color="tab:red", ls=":", lw=1)
-        _ax.annotate("A", (_Ystar, _Ystar), xytext=(8, -14), textcoords="offset points", color="tab:red")
+        _ax.annotate(f"Y={round(_Ystar,0)}", (_Ystar, _Ystar), xytext=(8, -14), textcoords="offset points", color="tab:red")
 
     _ax.set_xlim(0, _ymax)
     _ax.set_ylim(0, _ymax)
