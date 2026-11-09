@@ -95,8 +95,8 @@ def _(G, I0, T, c0, c1, ibar, mo, np, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    IS: $Y=C(\underset{+}{Y}−\underset{-}{T})+I(\underset{+}{Y},\, \underset{-}{i})$
-    LM: $i = \bar{i}$ &nbsp;
+    ##### IS: $Y=C(\underset{+}{Y}−\underset{-}{T})+I(\underset{+}{Y},\, \underset{-}{i})$
+    ##### LM: $i = \bar{i}$ &nbsp;
 
     - $c_0$ autonomous consumption
     - $c_1$ marginal propensity to consume
