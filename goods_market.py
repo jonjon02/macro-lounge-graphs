@@ -37,7 +37,6 @@ def _(G, I, T, c0, c1, mo, np, plt):
 
     _fig, _ax = plt.subplots(figsize=(6.5, 6))
     _ax.plot(_Y, _Y, color="black", lw=1.5, label="Y = Z (45° line)")
-    _ax.plot(_Y, _base_auto + _base_c1 * _Y, color="grey", ls="--", lw=1, label="ZZ (baseline)")
     _ax.plot(_Y, _auto + c1.value * _Y, color="tab:blue", lw=2.5, label="ZZ")
 
     # Equilibrium (only drawn if positive)
