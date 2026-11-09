@@ -54,7 +54,8 @@ def _(M, P, Y, mo, np, plt):
 
     _stats = mo.md(
         f"**Money supply M:** {M.value:,.0f}  \n"
-        f"**Nominal income \\$Y:** {Y.value:,.0f}  \n"
+        f"**Real income \\Y:** {Y.value:,.0f}  \n"
+        f"**Price Level \\P:** {P.value:,.2f}  \n"
         f"**Equilibrium interest rate i\\*:** {_i_plot:.2f} %"
     )
 
@@ -70,13 +71,13 @@ def _(M, P, Y, mo, np, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Money demand: $M^d = \$Y \, L(i) = \$Y \,(k - h\,i)$
-    ### Equilibrium: $M = \$Y\,(k - h\,i) \;\Rightarrow\; i^* = \dfrac{1}{h}\left(k - \dfrac{M}{\$Y}\right)$
+    ### Nominal Money demand: $M^D = YPL(i) = €\underscore{Y}{+}L(\underscore{i}{-}$
+    ### Equilibrium: $M^D = M^S$
 
     - $M$ money supply, set by the central bank
-    - $\$Y$ nominal income
-    - $h$ interest sensitivity of money demand
-    - $k$ money demand per unit of nominal income at $i = 0$, fixed at $0.5$
+    - $Y$ nominal income, €Y real income
+    - $P$ price level
+    - $i$ nominal interest rate
     """)
     return
 
