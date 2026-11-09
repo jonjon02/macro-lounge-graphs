@@ -15,18 +15,21 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     M = mo.ui.slider(200, 1500, step=25, value=600, label="$M$", show_value=True)
-    nY = mo.ui.slider(1000, 4000, step=50, value=2000, label="$\\$Y$", show_value=True)
-    h = mo.ui.slider(1.0, 5.0, step=0.1, value=2.5, label="$h$", show_value=True)
-    return M, h, nY
+    Y = mo.ui.slider(1000, 4000, step=50, value=2000, label="$\\$Y$", show_value=True)
+    P = mo.ui.slider(1, 10, step=0.5, value=5, label="$\\$Y$", show_value=True)
+    return M, Y, P
 
 
 @app.cell(hide_code=True)
-def _(M, h, mo, nY, np, plt):
+def _(M, P, Y, mo, np, plt):
     _k = 0.5
-    # Baseline (default values) as grey reference curve
-    _base_nY, _base_h, _base_M = 2000, 2.5, 600
+    h = 0.2
 
-    _i_star = (_k - M.value / nY.value) / h.value
+
+    # Baseline (default values) as grey reference curve
+    _base_Y, _base_h, _base_M = 2000, 2.5, 600
+
+    _i_star = (_k - M.value / Y.value * P.value) / h.value
     _trap = _i_star < 0
     _i_plot = max(_i_star, 0.0)
 
@@ -37,9 +40,7 @@ def _(M, h, mo, nY, np, plt):
 
     # Money demand curves (i in percent on the y-axis)
     _i = np.linspace(0, _k / h.value, 200)
-    _ax.plot(nY.value * (_k - h.value * _i), _i * 100, color="tab:blue", lw=2.5, label="Money demand $M^d$")
-    _ib = np.linspace(0, _k / _base_h, 200)
-    _ax.plot(_base_nY * (_k - _base_h * _ib), _ib * 100, color="grey", ls="--", lw=1, label="$M^d$ (baseline)")
+    _ax.plot(((P.value * Y.value) / 5 * M.value) , color="tab:blue", lw=2.5, label="Money demand $M^d$")
 
     # Money supply (vertical)
     _ax.axvline(M.value, color="black", lw=1.5, label="Money supply $M^s$")
@@ -61,13 +62,13 @@ def _(M, h, mo, nY, np, plt):
 
     _stats = mo.md(
         f"**Money supply M:** {M.value:,.0f}  \n"
-        f"**Nominal income \\$Y:** {nY.value:,.0f}  \n"
+        f"**Nominal income \\$Y:** {Y.value:,.0f}  \n"
         f"**Equilibrium interest rate i\\*:** {_i_plot * 100:.2f} %"
         + ("\n\n⚠️ Money supply exceeds demand even at i = 0 (zero lower bound)." if _trap else "")
     )
 
     mo.hstack(
-        [mo.vstack([M, nY, h, _stats], gap=1), mo.as_html(_fig)],
+        [mo.vstack([M, Y, h, _stats], gap=1), mo.as_html(_fig)],
         widths=[1.2, 2],
         align="center",
         gap=2,
