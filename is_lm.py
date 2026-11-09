@@ -103,7 +103,7 @@ def _(mo):
     - $T$ taxes
     - $G$ government spending
     - $\bar{I}$ investment
-    - $\bar{i}$ policy rat (in %), set by the central bank
+    - $\bar{i}$ policy rate (in %), set by the central bank
     """)
     return
 

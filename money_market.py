@@ -14,18 +14,6 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""
-    Money demand: $M^d = \$Y \, L(i) = \$Y \,(k - h\,i)$ &nbsp;&nbsp; with $k = 0.5$
-
-    Equilibrium: $M = \$Y\,(k - h\,i) \;\Rightarrow\; i^* = \dfrac{1}{h}\left(k - \dfrac{M}{\$Y}\right)$
-
-    <small>$M$ money supply (set by the central bank) · $\$Y$ nominal income · $h$ interest sensitivity of money demand</small>
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
     M = mo.ui.slider(200, 1500, step=25, value=600, label="$M$", show_value=True)
     nY = mo.ui.slider(1000, 4000, step=50, value=2000, label="$\\$Y$", show_value=True)
     h = mo.ui.slider(1.0, 5.0, step=0.1, value=2.5, label="$h$", show_value=True)
@@ -84,6 +72,20 @@ def _(M, h, mo, nY, np, plt):
         align="center",
         gap=2,
     )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Money demand: $M^d = \$Y \, L(i) = \$Y \,(k - h\,i)$
+    ### Equilibrium: $M = \$Y\,(k - h\,i) \;\Rightarrow\; i^* = \dfrac{1}{h}\left(k - \dfrac{M}{\$Y}\right)$
+
+    - $M$ money supply, set by the central bank
+    - $\$Y$ nominal income
+    - $h$ interest sensitivity of money demand
+    - $k$ money demand per unit of nominal income at $i = 0$, fixed at $0.5$
+    """)
     return
 
 

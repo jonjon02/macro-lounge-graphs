@@ -14,18 +14,6 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""
-    Demand: $Z = c_0 + c_1 (Y - T) + I + G$
-
-    Equilibrium: $Y^* = \dfrac{1}{1 - c_1}\,\big(c_0 - c_1 T + I + G\big)$
-
-    <small>$c_0$ autonomous consumption · $c_1$ marginal propensity to consume · $T$ taxes · $I$ investment · $G$ government spending</small>
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
     c0 = mo.ui.slider(100, 400, step=10, value=200, label="$c_0$", show_value=True)
     c1 = mo.ui.slider(0.1, 0.8, step=0.05, value=0.6, label="$c_1$", show_value=True)
     T = mo.ui.slider(1000, 4000, step=50, value=2000, label="$T$", show_value=True)
@@ -77,10 +65,25 @@ def _(G, I, T, c0, c1, mo, np, plt):
 
     mo.hstack(
         [mo.vstack([c0, c1, T, I, G, _stats], gap=1), mo.as_html(_fig)],
-        widths=[1, 2],
+        widths=[1.2, 2],
         align="center",
         gap=2,
     )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Demand: $Z = c_0 + c_1 (Y - T) + I + G$
+    ### Equilibrium: $Y^* = \dfrac{1}{1 - c_1}\,\big(c_0 - c_1 T + I + G\big)$
+
+    - $c_0$ autonomous consumption
+    - $c_1$ marginal propensity to consume
+    - $T$ taxes
+    - $I$ investment
+    - $G$ government spending
+    """)
     return
 
 
