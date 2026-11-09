@@ -15,7 +15,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    M = mo.ui.slider(1000, 5000, step=25, value=1500, label="$M$", show_value=True)
+    M = mo.ui.slider(1000, 5000, step=25, value=1500, label="$M^S$", show_value=True)
     Y = mo.ui.slider(1000, 4000, step=50, value=2000, label="$Y$", show_value=True)
     P = mo.ui.slider(1, 10, step=0.5, value=5, label="$P$", show_value=True)
     return M, P, Y
