@@ -71,7 +71,7 @@ def _(M, P, Y, mo, np, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Nominal Money demand: $M^D = YPL(i) = €\underscore{Y}{+}L(\underscore{i}{-}$
+    ### Nominal Money demand: $M^D = YPL(i) = €\underset{+}{Y}L(\underset{-}{i}$
     ### Equilibrium: $M^D = M^S$
 
     - $M$ money supply, set by the central bank
